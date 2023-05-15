@@ -1,4 +1,4 @@
-# 20WebAppsChalleng - Project 1
+# 20WebAppsChallenge - Project 1
 
 # Introduction
 Welcome to the #20WebAppsChallenge ! 
