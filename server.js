@@ -19,6 +19,9 @@ app.use(bodyparser.json());
 
 // Define routes
   //link-to-your-routes
+   app.get("/", (req, res)=>{
+       res.render("pages/home");
+   });
 
 // Start the server
 app.listen(port, () => {
