@@ -11,18 +11,18 @@ const port = 3030;
 app.set('view engine', 'ejs');
 
 // Set up static files directory
-app.use("assets/", express.static('public'));
+app.use("/assets", express.static('public'));
 
 // Set Middlewares 
 app.use(bodyparser.urlencoded({ extended:false }));
 app.use(bodyparser.json()); 
 
-// Define routes
-  //link-to-your-routes
+// Define your routes 
    app.get("/", (req, res)=>{
        res.render("pages/home");
    });
 
+   
 // Start the server
 app.listen(port, () => {
   console.log(`Default Server started on port ${port}`);

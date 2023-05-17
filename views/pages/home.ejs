@@ -1,7 +1,100 @@
-<%- include("header.ejs") %>
+<%- include("../components/header.ejs") %>
 
-    <h1>Welcome to our News Portal!</h1>
-    <p>Latest news articles will be displayed here. 0cc73212ee65cc564f4ee75ca7594375</p>
-    <button class="btn btn-primary">Hello world</button>
+<div class="main-container container col-md-9">
+  <style>
+    :root{
+        /* Light-Color-theme */ 
+           /* Text-colors */
+           --txt-light: #58606e;
+           --txt-dark:#131829;
+           --active-light: #f87524;
+
+           /* Backgrounds */
+           --bg-white: #fdfdfd;
+           --bg-dark-light:#e6ecf7;
+
+           /* borders */
+           --border-light:#e9e9e9;
+
+
+           /* Text-sizes*/
+            --sm-text: 13px;
+     }
+     *{
+        box-sizing: border-box;
+      }
+      .card-title{
+        color: var(--txt-dark);
+        font-weight: 700;
+      }
+     body{
+        color: var(--txt-light);
+     }
+    .article-bx{ 
+        max-width:30%;
+    }
+    .news-info, .news-source {font-size:var(--sm-text);}
+    .news-info .news-date{font-weight:530;}
+    .news-source{
+        font-weight: 600;
+    }
+    .article-bx .card-text{
+       text-align: justify;
+       line-break:anywhere;
+       font-weight:500;
+    }
+    .news-info .news-category{ 
+        padding:6px 12px;
+        border-radius:36px;
+        font-weight:600;
+        background-color: var(--bg-dark-light);
+     }
+     .article-bx  .card a.card-link{
+        color:var(--active-light) !important;
+     }
+    .article-bx  .card, .card-footer { 
+        border: none; 
+        background-color:var(--bg-white);
+    }
+    .article-bx  .card-body, .card-footer { 
+        padding:8px 2px !important;
+     }
+    .article-bx .card-header{
+        position: relative;  
+        padding: 0px; 
+        overflow: hidden;
+        border-radius:18px;
+        border:1px solid var(--border-light); 
+        background-color:var(--bg-white);
+    }
+    .article-bx .card-header img{ 
+        width:100%; 
+        height:auto;  
+    }
+  </style>
+<br>
+   <div class="article-bx">
+    <div class="card">
+        <div class="card-header">
+           <img src="assets/files/gallery/banner-img-01.png" alt="news-article-image">
+        </div>
+        <div class="card-body">
+            <p class="news-info my-3">
+                <span class="news-date">Wed 17, 2023</span>
+                <span class="news-category ml-3">Technology</span></p>
+            <h5 class="card-title my-3">Some card title that will spark some light into those</h5>
+            <p class="card-text">Some example text. Some example text.
+                Some example text. Some example text.
+                Some example text. Some example text.
+            </p>
+            <span class="news-source">Source : <a href="#" class="card-link">The Verge</a></span> 
+        </div>
+        <div class="card-footer">
+   
+        </div>
+    </div>
+   </div>
+
+</div>
     
-<%- include("../headers/footer.ejs") %>
+<%- include("../components/footer.ejs") %>
