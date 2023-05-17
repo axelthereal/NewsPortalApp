@@ -1,12 +1,49 @@
 <%- include("../components/header.ejs") %>
 
+<nav class="navbar navbar-expand-lg navbar-default bg-default sticky-top">
+    <div class="container">
+      <div class="navbar-nav justify-content-start">
+          <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Bookmarks</a>
+          </li> 
+        </ul>
+      </div>
+       <a href="" class="navbar-brand"><img src="assets/files/gallery/Logo.png" alt="nineone logo"></a>
+     <div class="navbar-nav justify-content-end">
+      <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Sign up</a>
+          </li> 
+          
+          <li class="nav-item">
+              <a class="nav-link disabled">|</a>
+            </li> 
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Contact</a>
+          </li> 
+        </ul>
+     </div>
+    </div>
+  </nav>
+
+  <div class="header-bx">
+     <div class="container col-md-9 py-4" align="center">
+          <h1>Lastest</h1>
+          <p class="sm-text"></p>
+     </div>
+  </div>
+
 <div class="main-container container col-md-9">
   <style>
     :root{
         /* Light-Color-theme */ 
            /* Text-colors */
            --txt-light: #58606e;
-           --txt-dark:#131829;
+           --txt-dark:#141a2d;
            --active-light: #f87524;
 
            /* Backgrounds */
@@ -23,13 +60,37 @@
      *{
         box-sizing: border-box;
       }
+     body{
+        color: var(--txt-light);
+        background-color: var(--bg-light);
+     }
+    a{
+        text-decoration: none;
+        color:inherit;
+    }
+    .navbar{
+        background-color: #ffffff;
+        border-bottom:1px solid var(--bg-dark-light);
+    } 
+    .navbar .navbar-brand{ 
+       float: center !important;
+    }
+     .navbar .navbar-brand img{
+        max-width: 100%; 
+        width:100px;
+        height:auto;
+     }
+     .navbar a{
+         color:var(--txt-dark);
+     }
+     .navbar a:hover{
+        color:var(--active-light);
+     }
+
       .card-title{
         color: var(--txt-dark);
         font-weight: 700;
       }
-     body{
-        color: var(--txt-light);
-     }
     .article-bx{ 
         max-width:30%;
     }
@@ -54,7 +115,7 @@
      }
     .article-bx  .card, .card-footer { 
         border: none; 
-        background-color:var(--bg-white);
+        background-color:transparent;
     }
     .article-bx  .card-body, .card-footer { 
         padding:8px 2px !important;
@@ -62,8 +123,8 @@
     .article-bx .card-header{
         position: relative;  
         padding: 0px; 
+        border-radius: 18px;
         overflow: hidden;
-        border-radius:18px;
         border:1px solid var(--border-light); 
         background-color:var(--bg-white);
     }
@@ -71,8 +132,11 @@
         width:100%; 
         height:auto;  
     }
-  </style>
-<br>
+  </style> 
+
+
+
+  <br>
    <div class="article-bx">
     <div class="card">
         <div class="card-header">
@@ -90,7 +154,6 @@
             <span class="news-source">Source : <a href="#" class="card-link">The Verge</a></span> 
         </div>
         <div class="card-footer">
-   
         </div>
     </div>
    </div>
