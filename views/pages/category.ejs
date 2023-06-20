@@ -1,0 +1,66 @@
+<%- include("../components/header.ejs") %>
+
+ 
+<!-- Main-Container -->
+<div class="container">
+
+    <!-- Articles-Suggestion -->
+    <div class="suggestion-section mt-3">
+      <div class="section-header pt-3">
+        <h3 class="header-title text-col-dark title title-fw-b title title-fw-b"><%= locals.pageTitle %></h3>
+        <p class="header-text text">Browse articles by category...</p>
+        <hr>
+      </div>
+  
+      <% if(locals.error){ %>
+          <div class="jumbotron">
+              <h1 class="header-title text-col-dark title title-fw-b title title-fw-b"><%= locals.error %> :/</h1> 
+              <h6 class="header-text text my-3">Hey, don't cry you can find more articles <a href="home" class="text-col-active">here.</a></h6>
+          </div>
+      <% }else{ %>
+        <div class="row">
+     
+            <% if(locals.articles && locals.articles.length > 0){  
+              for(article of locals.articles){ 
+                %>
+            <!-- Article-Item -->
+            <div class="article-bx col-4">
+              <div class="card">
+                 <div class="card-header">
+                    <div class="card-overlay img-overlay"></div>
+                    <img src="<%= article.image %>" alt="news-article-image" />
+                 </div>
+                 <div class="card-body">
+                     <p class="news-info my-3">
+                         <span class="news-date"><%= article.publishedAt %></span>
+                         <a href="<%= article.source.url %>"><span class="news-category ml-3"><%= article.source.name %></span></a>
+                        </p>
+                     <a href="<%= article.url %>" target="_blank">
+                      <h6 class="card-title title title-fw-sb my-3">
+                        <%= article.title %>
+                      </h6>
+                     </a>
+                     <p class="card-text text">
+                      <%= article.content.slice(0,90) %>...
+                     </p> 
+                 </div> 
+                 <div class="card-footer d-flex justify-content-between"> 
+                  <a href="<%= article.url %>" target="_blank">Read more</a>
+                 </div>
+              
+             </div>
+            </div>
+            <!-- Article-Item -->
+            <%  
+          } 
+        } %> 
+            
+         </div>
+        <% } %>
+      
+    </div>  
+
+</div>
+
+
+<%- include("../components/footer.ejs") %>       

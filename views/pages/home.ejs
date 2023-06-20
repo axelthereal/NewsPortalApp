@@ -1,163 +1,139 @@
 <%- include("../components/header.ejs") %>
 
-<nav class="navbar navbar-expand-lg navbar-default bg-default sticky-top">
-    <div class="container">
-      <div class="navbar-nav justify-content-start">
-          <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Bookmarks</a>
-          </li> 
-        </ul>
-      </div>
-       <a href="" class="navbar-brand"><img src="assets/files/gallery/Logo.png" alt="nineone logo"></a>
-     <div class="navbar-nav justify-content-end">
-      <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Sign up</a>
-          </li> 
-          
-          <li class="nav-item">
-              <a class="nav-link disabled">|</a>
-            </li> 
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Contact</a>
-          </li> 
-        </ul>
-     </div>
+<!-- Main-Container -->
+<div class="container">
+  <% if(locals.error){ %>
+    <div class="jumbotron">
+        <h1 class="header-title text-col-dark title title-fw-b title title-fw-b"><%= locals.error %> :/</h1>
+        <h5 class="header-text text">we're really sorry but we've not found an article related to what you're looking for...</h5>
+        <h6 class="header-text text my-3">Hey, don't cry you can find more articles <a href="home" class="text-col-active">here.</a></h6>
     </div>
-  </nav>
+<% }else{ %>
 
-  <div class="header-bx">
-     <div class="container col-md-9 py-4" align="center">
-          <h1>Lastest</h1>
-          <p class="sm-text"></p>
-     </div>
+  <!-- Featured-Article --> 
+    <% if(locals.articles){ %>
+    <a href="<%= locals.articles[0].url %>">
+      <div class="jumbotron featured-bx m-0 p-4 p-md-5 text-white rounded"> 
+        <img src="<%= locals.articles[0].image %>" class="featured-img banner-img"> 
+        <div class="overlay"></div>
+        <div class="col-md-6 featured-content px-0 my-4"> 
+          <h2 class="display-6 title title-fw-b"><%= locals.articles[0].title %></h2>
+          <p class="lead my-3 text text-fw-sb">
+            <%= locals.articles[0].content.slice(0,150) %>...
+          </p>
+        </div>
+      </div> 
+    </a>
+    <% } %>
+  <!-- */Featured-Article -->
+
+
+
+  <!-- Articles-Suggestion -->
+  <div class="suggestion-section mt-3">
+    <div class="section-header pt-3">
+      <h3 class="header-title text-col-dark title title-fw-b title title-fw-b">Latest</h3>
+      <p class="header-text text">Get access to the most favorable informations</p>
+      <hr>
+    </div>
+    <div class="row">
+     
+      <% if(locals.articles && locals.articles.length > 1){ 
+        let i = 0;
+        for(article of locals.articles){
+          if(i > 0 && i <= 6){
+          %>
+      <!-- Article-Item -->
+      <div class="article-bx col-4">
+        <div class="card">
+           <div class="card-header">
+              <div class="card-overlay img-overlay"></div>
+              <img src="<%= article.image %>" alt="news-article-image" />
+           </div>
+           <div class="card-body">
+               <p class="news-info my-3">
+                   <span class="news-date"><%= article.publishedAt %></span>
+                   <a href="<%= article.source.url %>"><span class="news-category ml-3"><%= article.source.name %></span></a>
+                  </p>
+               <a href="<%= article.url %>" target="_blank">
+                <h6 class="card-title title title-fw-sb my-3">
+                  <%= article.title %>
+                </h6>
+               </a>
+               <p class="card-text text">
+                <%= article.content.slice(0,90) %>...
+               </p> 
+           </div> 
+           <div class="card-footer d-flex justify-content-between"> 
+            <a href="<%= article.url %>" target="_blank">Read more</a>
+           </div>
+        
+       </div>
+      </div>
+      <!-- Article-Item -->
+      <% 
+    } 
+    i++;
+    } 
+  } %> 
+      
+   </div>
+  </div>
+<!-- */Articles-Suggestion -->
+
+
+<!-- Articles-Banners -->
+<div class="article-banners my-5">
+  <div class="section-header pt-3 mb-2">
+    <h3 class="header-title text-col-dark title title-fw-b">Featured</h3>
+    <p class="header-text">Get access to the most favorable informations</p>
+    <hr>
   </div>
 
-<div class="main-container container col-md-9">
-  <style>
-    :root{
-        /* Light-Color-theme */ 
-           /* Text-colors */
-           --txt-light: #58606e;
-           --txt-dark:#141a2d;
-           --active-light: #f87524;
+<div class="row mb-5 mt-3">
 
-           /* Backgrounds */
-           --bg-white: #fdfdfd;
-           --bg-dark-light:#e6ecf7;
-
-           /* borders */
-           --border-light:#e9e9e9;
-
-
-           /* Text-sizes*/
-            --sm-text: 13px;
-     }
-     *{
-        box-sizing: border-box;
-      }
-     body{
-        color: var(--txt-light);
-        background-color: var(--bg-light);
-     }
-    a{
-        text-decoration: none;
-        color:inherit;
-    }
-    .navbar{
-        background-color: #ffffff;
-        border-bottom:1px solid var(--bg-dark-light);
-    } 
-    .navbar .navbar-brand{ 
-       float: center !important;
-    }
-     .navbar .navbar-brand img{
-        max-width: 100%; 
-        width:100px;
-        height:auto;
-     }
-     .navbar a{
-         color:var(--txt-dark);
-     }
-     .navbar a:hover{
-        color:var(--active-light);
-     }
-
-      .card-title{
-        color: var(--txt-dark);
-        font-weight: 700;
-      }
-    .article-bx{ 
-        max-width:30%;
-    }
-    .news-info, .news-source {font-size:var(--sm-text);}
-    .news-info .news-date{font-weight:530;}
-    .news-source{
-        font-weight: 600;
-    }
-    .article-bx .card-text{
-       text-align: justify;
-       line-break:anywhere;
-       font-weight:500;
-    }
-    .news-info .news-category{ 
-        padding:6px 12px;
-        border-radius:36px;
-        font-weight:600;
-        background-color: var(--bg-dark-light);
-     }
-     .article-bx  .card a.card-link{
-        color:var(--active-light) !important;
-     }
-    .article-bx  .card, .card-footer { 
-        border: none; 
-        background-color:transparent;
-    }
-    .article-bx  .card-body, .card-footer { 
-        padding:8px 2px !important;
-     }
-    .article-bx .card-header{
-        position: relative;  
-        padding: 0px; 
-        border-radius: 18px;
-        overflow: hidden;
-        border:1px solid var(--border-light); 
-        background-color:var(--bg-white);
-    }
-    .article-bx .card-header img{ 
-        width:100%; 
-        height:auto;  
-    }
-  </style> 
-
-
-
-  <br>
-   <div class="article-bx">
-    <div class="card">
-        <div class="card-header">
-           <img src="assets/files/gallery/banner-img-01.png" alt="news-article-image">
-        </div>
-        <div class="card-body">
-            <p class="news-info my-3">
-                <span class="news-date">Wed 17, 2023</span>
-                <span class="news-category ml-3">Technology</span></p>
-            <h5 class="card-title my-3">Some card title that will spark some light into those</h5>
-            <p class="card-text">Some example text. Some example text.
-                Some example text. Some example text.
-                Some example text. Some example text.
-            </p>
-            <span class="news-source">Source : <a href="#" class="card-link">The Verge</a></span> 
-        </div>
-        <div class="card-footer">
-        </div>
+  <% 
+  if(locals.articles && locals.articles.length > 7){
+    let i = 0;
+        for(article of locals.articles){
+          if(i > 6 && i <= 8){
+  %>
+   <!-- Articles-Banners-Item -->
+   <div class="col-md-6 article-banner-item">
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <!-- Banner-Content -->
+      <div class="col-6 p-4 d-flex flex-column position-static">
+        <a href="<%= article.source.url %>"><strong class="d-inline-block mb-2 text-col-active"><%= article.source.name %></strong></a>
+        <h4 class="mb-0 text-col-dark title title-fw-sb"><%= article.title %></h4> 
+        <p class="card-text mb-auto my-2"><%= article.content.slice(0,63) %>...</p>
+        <a href="<%= article.url %>" class="stretched-link my-1">Continue reading</a>
+      </div>
+      <!-- */Banner-Content -->
+      <!-- Banner-Img -->
+      <div class="col-6 d-lg-block banner-img">
+        <img src="<%= article.image %>" alt="" srcset="">
+        <div class="img-overlay"></div>
+      </div>
+      <!-- */Banner-Img -->
     </div>
-   </div>
+  </div>
+  <!-- */Articles-Banners-Item -->
+  <%  
+}
+i++;
+        }
+      }
+  %>
+ 
 
 </div>
-    
+</div>
+<!-- */Articles-Banners -->
+
+
+<% } %>
+</div>
+<!-- */Main-Container -->
+
+
 <%- include("../components/footer.ejs") %>

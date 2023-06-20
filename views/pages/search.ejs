@@ -1,0 +1,63 @@
+<%- include("../components/header.ejs") %>
+
+ 
+<!-- Main-Container -->
+<div class="container">
+
+  <!-- Articles-Suggestion -->
+  <div class="suggestion-section mt-3">
+    <div class="section-header pt-3">
+      <h3 class="header-title text-col-dark title title-fw-b title title-fw-b">Search results</h3>
+      <p class="header-text text">You searched for <b>"<%= locals.q %></b>"</b>...</p>
+      <hr>
+    </div>
+
+    <% if(locals.error){ %>
+        <div class="jumbotron">
+            <h1 class="header-title text-col-dark title title-fw-b title title-fw-b"><%= locals.error %> :/</h1>
+            <h5 class="header-text text">we're really sorry but we've not found an article related to what you're looking for...</h5>
+            <h6 class="header-text text my-3">Hey, don't cry you can find more articles <a href="home" class="text-col-active">here.</a></h6>
+        </div>
+    <% }else{ %>
+
+        <div class="row mb-5 mt-3">
+
+            <% 
+            if(locals.articles && locals.articles.length > 0){ 
+                  for(article of locals.articles){ 
+            %>
+             <!-- Articles-Banners-Item -->
+             <div class="col-md-12 article-banner-item">
+              <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <!-- Banner-Img -->
+                <div class="col-6 d-lg-block banner-img">
+                  <img src="<%= article.image %>" alt="" srcset="">
+                  <div class="img-overlay"></div>
+                </div>
+                <!-- */Banner-Img -->
+                <!-- Banner-Content -->
+                <div class="col-6 p-4 d-flex flex-column position-static">
+                  <a href="<%= article.source.url %>"><strong class="d-inline-block mb-2 text-col-active"><%= article.source.name %></strong></a>
+                  <h4 class="mb-0 text-col-dark title title-fw-sb"><%= article.title %></h4> 
+                  <p class="card-text mb-auto my-2"><%= article.content.slice(0,63) %>...</p>
+                  <a href="<%= article.url %>" class="stretched-link my-1">Continue reading</a>
+                </div>
+                <!-- */Banner-Content -->
+              </div>
+            </div>
+            <!-- */Articles-Banners-Item -->
+            <%   
+                  }
+                }
+            %>
+           
+          
+          </div>
+
+    <% } %>
+
+</div>
+
+
+</div>
+<%- include("../components/footer.ejs") %>    
