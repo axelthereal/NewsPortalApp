@@ -70,3 +70,7 @@ axios.get(url)
 app.listen(port, () => {
       console.log(`Default Server started on port ${port}`);
 });
+
+
+// Export the Express API for vercel serverless functions
+module.exports = app;
