@@ -5,7 +5,7 @@ const bodyparser = require('body-parser'); //parse json bodies
 const app = express()
 
 // Define your ports and variables
-const port = 3030;
+const port = process.env.PORT || 3030;
 
 // Set up EJS as the view engine
 app.set('view engine', 'ejs');
