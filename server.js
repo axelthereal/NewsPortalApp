@@ -66,7 +66,7 @@ axios.get(url)
     
     
    
-// Start the server
+// Start
 app.listen(port, () => {
       console.log(`Default Server started on port ${port}`);
 });
