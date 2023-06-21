@@ -15,7 +15,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // Set up static files directory
-app.use("/assets", express.static('public'));
+app.use("/assets", express.static(path.join(__dirname, 'public')));
 
 // Set Middlewares 
 app.use(bodyparser.urlencoded({ extended:false }));
