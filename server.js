@@ -7,6 +7,10 @@ const app = express()
 // Define your ports and variables
 const port = process.env.PORT || 8080;
 
+// Set up views
+const path = require('path');
+app.set('views', path.join(__dirname, 'views'));
+
 // Set up EJS as the view engine
 app.set('view engine', 'ejs');
 
