@@ -37,6 +37,8 @@ The News Portal App is a web application built using Node.js that provides a pla
 5. Open the app in your browser:
    http://localhost:3030
 
+# View the App
+follow: https://news-challengeapp-demo.vercel.app/
 
 # Are you new to the challenge ? Meet us here :
   Telegram : https://t.me/the20WebAppsChallenge
